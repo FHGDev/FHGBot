@@ -1,6 +1,6 @@
 const { Client, RichEmbed, Collection } = require('discord.js');
 const bot = new Client();
-const prefix = "fhg "
+const prefix = "fhg!"
 
 
 bot.commands = new Collection()
