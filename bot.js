@@ -26,9 +26,9 @@ bot.on('message', message => {
   const args = mArray.slice(1)
   const log = mArray[0].slice(prefix.length)
   const cmd = bot.commands.get(log)
-  
+  const em = new RichEmbed()
   if (cmd) {
-    cmd.run(bot, message, args)
+    cmd.run(bot, message, args, em)
     console.log(`${message.author.username} used the ${log} command.`)
     // SOON => baselogger(bot, `${message.author.username} used the ${log} command.`, bot.user.avatarURL)
   }
