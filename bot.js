@@ -15,7 +15,7 @@ require('fs').readdir("./commands/", (err, files) => {
 
 bot.on('ready', () => {
   console.log("FHGBot ready!")
-  bot.user.setActivity(`for fhg help | ${bot.guilds.size} servers`, {type: "WATCHING"})
+  bot.user.setActivity(`for fhg!help | ${bot.guilds.size} servers`, {type: "WATCHING"})
 })
 
 bot.on('message', message => {
