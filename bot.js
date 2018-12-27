@@ -1,6 +1,6 @@
 const { Client, RichEmbed, Collection } = require('discord.js');
 const bot = new Client();
-const prefix = "fhg!"
+const prefix = "f."
 
 
 bot.commands = new Collection()
@@ -15,7 +15,11 @@ require('fs').readdir("./commands/", (err, files) => {
 
 bot.on('ready', () => {
   console.log("FHGBot ready!")
-  bot.user.setActivity(`for fhg!help | ${bot.guilds.size} servers`, {type: "WATCHING"})
+  bot.user.setActivity(`Loading FHGBot...`, {type: "STREAMING", url: "https://twitch.tv/freakinghulk"})
+  
+  setTimeout(() => {
+    bot.user.setActivity(`for f.help | ${bot.guilds.size} servers`, { type: "WATCHING" })
+  }, 10000)
 })
 
 bot.on('message', message => {
@@ -26,9 +30,9 @@ bot.on('message', message => {
   const args = mArray.slice(1)
   const log = mArray[0].slice(prefix.length)
   const cmd = bot.commands.get(log)
-  const em = new RichEmbed()
+  
   if (cmd) {
-    cmd.run(bot, message, args, em)
+    cmd.run(bot, message, args)
     console.log(`${message.author.username} used the ${log} command.`)
     // SOON => baselogger(bot, `${message.author.username} used the ${log} command.`, bot.user.avatarURL)
   }
