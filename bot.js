@@ -34,6 +34,7 @@ bot.on('message', message => {
   if (bot.mentioned) {
     cleverbot.ask(asked, (err, results) => {
       message.channel.send(results)
+      return;
     })
   }
   
