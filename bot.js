@@ -1,9 +1,13 @@
 const { Client, RichEmbed, Collection } = require('discord.js');
 const bot = new Client();
 const prefix = "f."
-
-
+const cleverbot = new (require('cleverbot.io'))(process.env.cleverbot_user, process.env.cleverbot_password)
+cleverbot.create((err, session) => {
+  console.log("Cleverbot initialized.");
+  cleverbot.setNick("FHGBot");
+})
 bot.commands = new Collection()
+bot.mentioned;
 
 require('fs').readdir("./commands/", (err, files) => {
   console.log('Loading commands...')
@@ -23,6 +27,16 @@ bot.on('ready', () => {
 })
 
 bot.on('message', message => {
+  if (message.mentions.members.first() == message.guild.me) {
+    bot.mentioned = true;
+  }
+  let asked = message.content.split(" ")[0].slice(prefix.length)
+  if (bot.mentioned) {
+    cleverbot.ask(asked, (err, results) => {
+      message.channel.send(results)
+    })
+  }
+  
   if (!message.guild) return;
   if (message.author.bot) return;
   if (!message.content.startsWith(prefix)) return;
