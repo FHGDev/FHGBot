@@ -1,6 +1,6 @@
 module.exports.run = (bot, message, args, em) => {
   const ping = Math.floor(bot.ping)
-  em
+  const em = new (require('discord.js').RichEmbed)()
   .setTitle("FHGBot Ping")
   .setDescription(`PONG! My ping is ${ping}ms.`)
   .setTimestamp()
