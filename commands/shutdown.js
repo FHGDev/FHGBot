@@ -5,7 +5,9 @@ module.exports.run = (bot, message, args) => {
   .setTimestamp()
   .setColor("RED")
   message.channel.send({embed: embed});
-  process.exit(666);
+  setTimeout(() => {
+    process.exit(666);
+  }, 5000)
 }
 
 module.exports.help = {name: "shutdown"}
