@@ -2,6 +2,8 @@
   "dependencies": {
     "discord.js": "latest",
     "snekfetch": "latest",
-    "node-opus": "latest"
+    "node-opus": "latest",
+    "mongoose": "latest",
+    "cleverbot.io": "latest"
   }
 }
