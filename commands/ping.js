@@ -1,5 +1,6 @@
-module.exports.run = (bot, message, args, em) => {
+module.exports.run = (bot, message, args) => {
   const ping = Math.floor(bot.ping)
+  
   const em = new (require('discord.js').RichEmbed)()
   .setTitle("FHGBot Ping")
   .setDescription(`PONG! My ping is ${ping}ms.`)
