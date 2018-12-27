@@ -1,4 +1,4 @@
-var discord = require("discord.js"),
+var discord = require("discord.js")
 
 module.exports.run = (bot, message, args) => {
   let msg = args.join(' ');
