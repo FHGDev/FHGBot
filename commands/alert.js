@@ -1,20 +1,18 @@
 var discord = require("discord.js"),
-noargs = null
-
 
 module.exports.run = (bot, message, args) => {
   let msg = args.join(' ');
-  if (!msg) noargs = true
   let em = new discord.RichEmbed()
   .setTitle("FHGBot Alert")
   .setDescription("Contacting FHGDev...")
   .setTimestamp()
+  .setColor("RED")
 
   message.channel.send({embed: em})
 
-  let owner = bot.users.find('name', 'FHGDev')
+  let owner = bot.users.find(u => u.id == process.env.ownerID)
 
-  if (noargs) {
+  if (!msg) {
     em
     .setTitle("Alert!")
     .setDescription(`${message.author.username} needs help in ${message.channel.name}!`)
@@ -28,7 +26,8 @@ module.exports.run = (bot, message, args) => {
     .setDescription(`${message.author.username} needs help in #${message.channel.name}!`)
     .setTimestamp()
     .setColor("RANDOM")   
-    owner.send({embed: em})  }
+    owner.send({embed: em})
+  }
 }
 
 module.exports.help = {
