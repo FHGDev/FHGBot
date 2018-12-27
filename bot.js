@@ -2,9 +2,9 @@ const { Client, RichEmbed, Collection } = require('discord.js');
 const bot = new Client();
 const prefix = "f."
 const cleverbot = new (require('cleverbot.io'))(process.env.cleverbot_user, process.env.cleverbot_password)
+cleverbot.setNick("FHGBot");
 cleverbot.create((err, session) => {
   console.log("Cleverbot initialized.");
-  cleverbot.setNick("FHGBot");
 })
 bot.commands = new Collection()
 bot.mentioned;
