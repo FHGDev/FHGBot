@@ -3,9 +3,7 @@ const bot = new Client();
 const prefix = "f."
 const cleverbot = new (require('cleverbot.io'))(process.env.cleverbot_user, process.env.cleverbot_password)
 cleverbot.setNick("FHGBot");
-cleverbot.create((err, session) => {
-  console.log("Cleverbot initialized.");
-})
+
 bot.commands = new Collection()
 bot.mentioned;
 
@@ -27,14 +25,19 @@ bot.on('ready', () => {
 })
 
 bot.on('message', message => {
+  
   if (message.mentions.members.first() == message.guild.me) {
     bot.mentioned = true;
   }
   let asked = message.content.split(" ")[0].slice(prefix.length)
   if (bot.mentioned) {
-    cleverbot.ask(asked, (err, results) => {
-      message.channel.send(results)
-      return;
+    cleverbot.create((err, session) => {
+      console.log("Cleverbot initialized.");
+      
+      cleverbot.ask(asked, (err, results) => {
+        message.channel.send(results)
+        return;
+      })
     })
   }
   
