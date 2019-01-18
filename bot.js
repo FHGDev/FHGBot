@@ -25,22 +25,6 @@ bot.on('ready', () => {
 })
 
 bot.on('message', message => {
-  
-  if (message.mentions.members.first() == message.guild.me) {
-    bot.mentioned = true;
-  }
-  let asked = message.content.split(" ")[0].slice(prefix.length)
-  if (bot.mentioned) {
-    cleverbot.create((err, session) => {
-      console.log("Cleverbot initialized.");
-      
-      cleverbot.ask(asked, (err, results) => {
-        message.channel.send(results)
-        return;
-      })
-    })
-  }
-  
   if (!message.guild) return;
   if (message.author.bot) return;
   if (!message.content.startsWith(prefix)) return;
