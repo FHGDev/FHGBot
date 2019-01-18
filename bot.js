@@ -24,6 +24,10 @@ bot.on('ready', () => {
   }, 10000)
 })
 
+bot.on('guildMemberAdd', member => {
+  member.guild.channels.find(c => c.name == "verify").send(`Welcome to ${member.guild.name}, <@${member.user.id}>! Please run \`f.verify\` to get started!`)
+})
+
 bot.on('message', message => {
   if (!message.guild) return;
   if (message.author.bot) return;
