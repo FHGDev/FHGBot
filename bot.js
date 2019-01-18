@@ -7,6 +7,10 @@ cleverbot.setNick("FHGBot");
 bot.commands = new Collection()
 bot.mentioned;
 
+process.on('unhandledRejection', (e,p) => {
+  console.error("Unhandled Rejection!")
+})
+
 require('fs').readdir("./commands/", (err, files) => {
   console.log('Loading commands...')
   if (err) return console.error("Command loading failed!")
