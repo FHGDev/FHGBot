@@ -32,6 +32,10 @@ bot.on('message', message => {
   if (!message.guild) return;
   if (message.author.bot) return;
   if (!message.content.startsWith(prefix)) return;
+  if (message.channel.id == "514198281556066307" || message.content !== "f.verify") {
+    message.author.send("Please do not send messages in #verify that are not `f.verify`.")
+    message.delete(500)
+  }
   const mArray = message.content.split(" ");
   const args = mArray.slice(1)
   const log = mArray[0].slice(prefix.length)
