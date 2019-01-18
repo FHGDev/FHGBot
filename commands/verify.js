@@ -7,7 +7,7 @@ module.exports = {
     const m = message.guild.roles.find(r => r.name == "Members")
     const ch = message.guild.channels.find(c => c.id == "535894520932466697")
     const em = new (require('discord.js').RichEmbed)()
-    .addField("FHGBot Verify", `You are now verified!")
+    .addField("FHGBot Verify", "You are now verified!")
     .setTimestamp()
     .setColor("GREEN")
     .setFooter(`${message.member.displayName} just verified.`)
